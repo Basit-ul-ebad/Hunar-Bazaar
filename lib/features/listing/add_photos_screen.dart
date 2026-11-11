@@ -74,7 +74,8 @@ class AddPhotosScreen extends StatelessWidget {
                 const SizedBox(height: 14),
                 const StepProgress(step: 1),
                 const SizedBox(height: 14),
-                const Expanded(child: _Viewfinder()),
+                // Not const on purpose: a const widget is never rebuilt, so the preview would not update.
+                Expanded(child: _Viewfinder()),
                 const SizedBox(height: 14),
                 Align(
                   alignment: AlignmentDirectional.centerStart,
@@ -84,7 +85,7 @@ class AddPhotosScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                const _Thumbs(),
+                _Thumbs(),
                 const SizedBox(height: 14),
                 _Controls(
                   onGallery: () => _add(context, camera: false),
@@ -259,6 +260,27 @@ class _Thumbs extends StatelessWidget {
                         : Image.memory(photos[i], fit: BoxFit.cover),
                   ),
                 ),
+                if (!empty)
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: Semantics(
+                      button: true,
+                      label: 'Remove photo',
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.opaque,
+                        onTap: () => listingDraft.removePhoto(i),
+                        child: const Padding(
+                          padding: EdgeInsets.all(2),
+                          child: CircleAvatar(
+                            radius: 10,
+                            backgroundColor: AppColors.ink,
+                            child: Icon(Icons.close, size: 13, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 if (selected)
                   Positioned(
                     left: -4,

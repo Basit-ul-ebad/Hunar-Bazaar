@@ -1,3 +1,4 @@
+import '../../core/seller_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../data/mock_data.dart';
@@ -21,9 +22,9 @@ class BazaarHomeScreen extends StatelessWidget {
   void _onNav(BuildContext context, int i) {
     switch (i) {
       case 1:
-        context.go('/maker/me');
+        context.go('/makers');
       case 3:
-        context.go('/sell');
+        context.go(sellerProfile.shopName.isNotEmpty ? '/seller' : '/sell');
     }
   }
 

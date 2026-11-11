@@ -1,3 +1,4 @@
+import '../core/lang.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../l10n/l10n.dart';
@@ -30,7 +31,7 @@ class SellerBottomNav extends StatelessWidget {
     final t = context.l10n;
     final l =
         labels ??
-        [t.sellerHome, t.sellerListings, t.sellerOrders, t.sellerMyShop];
+        [t.sellerHome, tr('Market', 'مارکیٹ'), t.sellerOrders, t.sellerMyShop];
     return BottomNavBar(
       items: [for (var i = 0; i < 4; i++) NavItem(_icons[i], l[i])],
       current: current,
@@ -41,12 +42,13 @@ class SellerBottomNav extends StatelessWidget {
   }
 }
 
-/// Seller bottom-nav routing: Home, Listings (own shop), Orders, My shop.
+/// Seller bottom-nav routing: Home (dashboard), Market (everything for sale), Orders, My shop.
 class SellerNav {
   SellerNav._();
 
   static void go(BuildContext context, int i) => context.go(switch (i) {
     0 => '/seller',
+    1 => '/',
     2 => '/seller/orders',
     _ => '/maker/me',
   });

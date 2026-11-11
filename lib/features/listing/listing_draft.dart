@@ -55,6 +55,18 @@ class ListingDraft extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Removes photo [i] (the maker picked the wrong one).
+  void removePhoto(int i) {
+    if (i < 0 || i >= photos.length) return;
+    photos.removeAt(i);
+    if (photos.isEmpty) {
+      selectedPhoto = 0;
+    } else if (i < selectedPhoto || selectedPhoto >= photos.length) {
+      selectedPhoto = (selectedPhoto - 1).clamp(0, photos.length - 1);
+    }
+    notifyListeners();
+  }
+
   void selectPhoto(int i) {
     selectedPhoto = i;
     notifyListeners();

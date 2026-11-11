@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'features/buyer/bazaar_home_screen.dart';
 import 'features/buyer/live_listing_screen.dart';
 import 'features/buyer/maker_storefront_screen.dart';
+import 'features/buyer/makers_screen.dart';
 import 'features/buyer/product_screen.dart';
 import 'features/gallery/gallery_screen.dart';
 import 'features/listing/add_photos_screen.dart';
@@ -20,6 +21,7 @@ final router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(path: '/', builder: (context, state) => const BazaarHomeScreen()),
+    GoRoute(path: '/makers', builder: (context, state) => const MakersScreen()),
     GoRoute(
       path: '/listing/:id',
       builder: (context, state) =>

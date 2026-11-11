@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/lang.dart';
 import '../../data/mock_data.dart';
 import '../../l10n/l10n.dart';
 import '../../theme/app_colors.dart';
@@ -365,6 +366,18 @@ class _FairPriceScreenState extends State<FairPriceScreen> {
           _line(l.yourTime('${d.hours}', rs(kHourlyRate)), rs(s.timeValue)),
           const SizedBox(height: 8),
           _line(l.handValue, '+ ${(s.margin * 100).round()}%'),
+          if ((d.market - 1).abs() > 0.005) ...[
+            const SizedBox(height: 8),
+            _line(
+              tr('Market in ${d.cityName}', '${d.cityName} کی مارکیٹ'),
+              '${d.market > 1 ? '+' : '-'} ${((d.market - 1).abs() * 100).round()}%',
+            ),
+            const SizedBox(height: 6),
+            Text(
+              tr(d.marketNoteEn, d.marketNoteUr),
+              style: AppText.dm(12, color: AppColors.muted),
+            ),
+          ],
           const SizedBox(height: 12),
           Tappable(
             onTap: () {},

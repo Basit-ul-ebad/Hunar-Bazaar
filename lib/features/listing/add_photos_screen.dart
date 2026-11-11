@@ -27,13 +27,25 @@ class AddPhotosScreen extends StatelessWidget {
       final picker = ImagePicker();
       final files = <XFile>[];
       if (camera) {
-        final f = await picker.pickImage(source: ImageSource.camera);
+        final f = await picker.pickImage(
+          source: ImageSource.camera,
+          maxWidth: 900,
+          imageQuality: 70,
+        );
         if (f != null) files.add(f);
       } else if (room == 1) {
-        final f = await picker.pickImage(source: ImageSource.gallery);
+        final f = await picker.pickImage(
+          source: ImageSource.gallery,
+          maxWidth: 900,
+          imageQuality: 70,
+        );
         if (f != null) files.add(f);
       } else {
-        files.addAll(await picker.pickMultiImage(limit: room));
+        files.addAll(await picker.pickMultiImage(
+          limit: room,
+          maxWidth: 900,
+          imageQuality: 70,
+        ));
       }
       final bytes = <Uint8List>[for (final f in files) await f.readAsBytes()];
       listingDraft.addPhotos(bytes);

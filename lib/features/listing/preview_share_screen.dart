@@ -1,5 +1,7 @@
 import 'dart:ui' as ui;
+import 'package:flutter/foundation.dart' show debugPrint;
 import 'package:flutter/material.dart';
+import '../../core/listing_repository.dart';
 import 'package:flutter/rendering.dart';
 import 'package:go_router/go_router.dart';
 import 'package:share_plus/share_plus.dart';
@@ -42,6 +44,11 @@ class _PreviewShareScreenState extends State<PreviewShareScreen> {
     if (_busy) return;
     setState(() => _busy = true);
     final router = GoRouter.of(context);
+    try {
+      await listingRepository.publish(listingDraft);
+    } catch (e) {
+      debugPrint('Publish to Firestore failed: $e');
+    }
     try {
       final boundary =
           _cardKey.currentContext!.findRenderObject() as RenderRepaintBoundary;

@@ -12,6 +12,7 @@ import '../../widgets/product_card.dart';
 import '../../widgets/step_header.dart';
 import '../../widgets/text_link.dart';
 import '../../widgets/two_column_grid.dart';
+import 'live_listings_section.dart';
 
 /// B1 · Bazaar home (`/`).
 class BazaarHomeScreen extends StatelessWidget {
@@ -61,6 +62,7 @@ class BazaarHomeScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 18),
+                  const LiveListingsSection(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../../core/seller_profile.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../data/mock_data.dart';
@@ -152,7 +153,11 @@ class _ShopSetupScreenState extends State<ShopSetupScreen> {
                 const Spacer(),
                 PrimaryButton(
                   label: l.openMyShop,
-                  onPressed: () => context.go('/seller'),
+                  onPressed: () {
+                    sellerProfile.shopName = _shop.text.trim();
+                    sellerProfile.city = _city.text.trim();
+                    context.go('/seller');
+                  },
                 ),
               ],
             ),

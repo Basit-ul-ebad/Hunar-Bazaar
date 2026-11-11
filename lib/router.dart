@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'features/buyer/bazaar_home_screen.dart';
+import 'features/buyer/live_listing_screen.dart';
 import 'features/buyer/maker_storefront_screen.dart';
 import 'features/buyer/product_screen.dart';
 import 'features/gallery/gallery_screen.dart';
@@ -19,6 +20,11 @@ final router = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(path: '/', builder: (context, state) => const BazaarHomeScreen()),
+    GoRoute(
+      path: '/listing/:id',
+      builder: (context, state) =>
+          LiveListingScreen(listingId: state.pathParameters['id']!),
+    ),
     GoRoute(
       path: '/product/:id',
       builder: (context, state) =>

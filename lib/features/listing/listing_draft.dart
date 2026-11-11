@@ -1,4 +1,6 @@
 import 'package:flutter/foundation.dart';
+import '../../core/market_service.dart';
+import '../../core/seller_profile.dart';
 import 'listing_ai_service.dart';
 import 'pricing_calc.dart';
 
@@ -17,6 +19,12 @@ class ListingDraft extends ChangeNotifier {
   String storyUr = '';
   double craftMargin = 0.30;
 
+  /// Local market multiplier and why (see core/market_service.dart).
+  double market = 1.0;
+  String marketNoteEn = '';
+  String marketNoteUr = '';
+  String _marketFor = '';
+
   int materials = 1200;
   int days = 3;
   int userPrice = 5000;
@@ -24,7 +32,12 @@ class ListingDraft extends ChangeNotifier {
   int get hours => days * kHoursPerDay;
 
   PriceSuggestion get suggestion =>
-      suggestPrice(materials: materials, hours: hours, margin: craftMargin);
+      suggestPrice(
+        materials: materials,
+        hours: hours,
+        margin: craftMargin,
+        market: market,
+      );
 
   bool get hasPhoto => photos.isNotEmpty;
   Uint8List? get selected =>
@@ -50,7 +63,27 @@ class ListingDraft extends ChangeNotifier {
     storyEn = s.storyEn;
     storyUr = s.storyUr;
     craftMargin = s.craftMargin;
+    _refreshMarket(s.titleEn);
     notifyListeners();
+  }
+
+  String get cityName => cityKey(sellerProfile.city);
+
+  /// Instant city-tier estimate, then Gemini + Google Search refines it in the background.
+  void _refreshMarket(String product) {
+    if (product == _marketFor) return;
+    _marketFor = product;
+    final fb = tierFallback(sellerProfile.city);
+    market = fb.multiplier;
+    marketNoteEn = fb.noteEn;
+    marketNoteUr = fb.noteUr;
+    fetchMarket(city: sellerProfile.city, product: product).then((m) {
+      if (_marketFor != product) return;
+      market = m.multiplier;
+      marketNoteEn = m.noteEn;
+      marketNoteUr = m.noteUr;
+      notifyListeners();
+    });
   }
 
   void setMaterials(int v) {
@@ -74,6 +107,8 @@ class ListingDraft extends ChangeNotifier {
     selectedPhoto = 0;
     titleEn = titleUr = storyEn = storyUr = '';
     craftMargin = 0.30;
+    market = 1.0;
+    marketNoteEn = marketNoteUr = _marketFor = '';
     materials = 1200;
     days = 3;
     userPrice = 5000;

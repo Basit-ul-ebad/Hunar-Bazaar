@@ -88,6 +88,7 @@ Return JSON only.''';
         }
         final j = jsonDecode(text) as Map<String, dynamic>;
         _workingModel = name;
+        debugPrint('[HB] Gemini listing text OK (model: $name)');
         return ListingSuggestion(
           titleEn: (j['titleEn'] ?? '').toString().trim(),
           titleUr: (j['titleUr'] ?? '').toString().trim(),

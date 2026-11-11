@@ -8,6 +8,7 @@ class PriceSuggestion {
     required this.high,
     required this.timeValue,
     required this.margin,
+    this.market = 1.0,
   });
 
   final int fair;
@@ -19,6 +20,9 @@ class PriceSuggestion {
 
   /// Craft margin, clamped to 15–40 %.
   final double margin;
+
+  /// Local market multiplier (1.0 = national average), from core/market_service.dart.
+  final double market;
 }
 
 const kHourlyRate = 150; // editable in settings later
@@ -31,16 +35,19 @@ PriceSuggestion suggestPrice({
   required int hours,
   required double margin,
   int hourlyRate = kHourlyRate,
+  double market = 1.0,
 }) {
   final m = margin.clamp(0.15, 0.40).toDouble();
   final timeValue = hours * hourlyRate;
-  final fair = (materials + timeValue) * (1 + m);
+  final mk = market.clamp(0.85, 1.25).toDouble();
+  final fair = (materials + timeValue) * (1 + m) * mk;
   return PriceSuggestion(
     fair: roundTo100(fair),
     low: roundTo100(fair * 0.88),
     high: roundTo100(fair * 1.08),
     timeValue: timeValue,
     margin: m,
+    market: mk,
   );
 }
 

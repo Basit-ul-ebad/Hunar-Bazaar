@@ -1,3 +1,4 @@
+import '../../core/seller_profile.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import '../../core/listing_repository.dart';
@@ -79,7 +80,7 @@ class _PreviewShareScreenState extends State<PreviewShareScreen> {
   Widget build(BuildContext context) {
     final l = context.l10n;
     final t = MockText(l);
-    final price = rs(listingDraft.userPrice);
+    final price = rs(listingDraft.finalPrice);
     final message = l.shareMessage(price);
     final photo = listingDraft.selected;
     return Scaffold(
@@ -164,8 +165,12 @@ class _PreviewShareScreenState extends State<PreviewShareScreen> {
                                 const SizedBox(height: 6),
                                 Text(
                                   l.catalogByline(
-                                    t.makerFirst(rukhsanaId),
-                                    t.makerCity(rukhsanaId),
+                                    sellerProfile.shopName.isEmpty
+                                        ? tr('My shop', 'میری دکان')
+                                        : sellerProfile.shopName,
+                                    sellerProfile.city.trim().isEmpty
+                                        ? 'Pakistan'
+                                        : cityKey(sellerProfile.city),
                                   ),
                                   style: AppText.dm(13, color: AppColors.muted),
                                 ),

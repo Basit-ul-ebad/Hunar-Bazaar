@@ -48,6 +48,6 @@ class SellerNav {
   static void go(BuildContext context, int i) => context.go(switch (i) {
     0 => '/seller',
     2 => '/seller/orders',
-    _ => '/maker/rukhsana',
+    _ => '/maker/me',
   });
 }

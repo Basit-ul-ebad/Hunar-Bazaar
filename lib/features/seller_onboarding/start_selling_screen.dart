@@ -181,7 +181,7 @@ class _PhoneField extends StatelessWidget {
               const SizedBox(width: 8),
               const Expanded(
                 child: _BoxField(
-                  initial: '300 1234567',
+                  initial: '',
                   type: TextInputType.phone,
                 ),
               ),

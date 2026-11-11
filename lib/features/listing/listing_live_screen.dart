@@ -1,3 +1,5 @@
+import '../../core/lang.dart';
+import '../../core/seller_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -105,7 +107,9 @@ class ListingLiveScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    l.productDupatta,
+                                    (isUrdu.value ? listingDraft.titleUr : listingDraft.titleEn).trim().isEmpty
+                                        ? listingDraft.titleEn
+                                        : (isUrdu.value ? listingDraft.titleUr : listingDraft.titleEn),
                                     style: AppText.dm(
                                       14,
                                       weight: FontWeight.w700,
@@ -113,7 +117,7 @@ class ListingLiveScreen extends StatelessWidget {
                                   ),
                                   const SizedBox(height: 2),
                                   Text(
-                                    rs(listingDraft.userPrice),
+                                    rs(listingDraft.finalPrice),
                                     style: AppText.price(
                                       14,
                                       weight: FontWeight.w400,
@@ -146,7 +150,9 @@ class ListingLiveScreen extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 2),
                                 Text(
-                                  l.shopRukhsana,
+                                  sellerProfile.shopName.isEmpty
+                                      ? tr('My shop', 'میری دکان')
+                                      : sellerProfile.shopName,
                                   style: AppText.dm(
                                     14,
                                     weight: FontWeight.w700,
@@ -162,9 +168,8 @@ class ListingLiveScreen extends StatelessWidget {
                               final messenger = ScaffoldMessenger.of(context);
                               // TODO: use the real shop URL once the backend exists.
                               await Clipboard.setData(
-                                const ClipboardData(
-                                  text:
-                                      'https://hunarbazaar.app/maker/rukhsana',
+                                ClipboardData(
+                                  text: 'Hunar Bazaar - ${sellerProfile.shopName}',
                                 ),
                               );
                               messenger.showSnackBar(

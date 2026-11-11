@@ -25,9 +25,12 @@ class ListingDraft extends ChangeNotifier {
   String marketNoteUr = '';
   String _marketFor = '';
 
-  int materials = 1200;
-  int days = 3;
-  int userPrice = 5000;
+  int materials = 0;
+  int days = 1;
+  int userPrice = 0; // 0 = the maker has not typed her own price yet
+
+  /// The price she typed, or the calculated fair price if she did not choose one.
+  int get finalPrice => userPrice > 0 ? userPrice : suggestion.fair;
 
   int get hours => days * kHoursPerDay;
 
@@ -109,9 +112,9 @@ class ListingDraft extends ChangeNotifier {
     craftMargin = 0.30;
     market = 1.0;
     marketNoteEn = marketNoteUr = _marketFor = '';
-    materials = 1200;
-    days = 3;
-    userPrice = 5000;
+    materials = 0;
+    days = 1;
+    userPrice = 0;
     notifyListeners();
   }
 }

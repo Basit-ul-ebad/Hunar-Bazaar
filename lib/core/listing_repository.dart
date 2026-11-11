@@ -111,7 +111,7 @@ class ListingRepository {
           'titleUr': d.titleUr,
           'storyEn': d.storyEn,
           'storyUr': d.storyUr,
-          'price': d.userPrice,
+          'price': d.finalPrice,
           'priceFair': s.fair,
           'priceLow': s.low,
           'priceHigh': s.high,

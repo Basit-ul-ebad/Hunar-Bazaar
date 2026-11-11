@@ -82,7 +82,7 @@ class _Header extends StatelessWidget {
               TextLink(
                 l.viewShop,
                 size: 13,
-                onTap: () => context.go('/'),
+                onTap: () => context.go('/maker/me'),
               ),
             ],
           ),

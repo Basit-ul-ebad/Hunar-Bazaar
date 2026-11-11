@@ -26,9 +26,11 @@ class FairPriceScreen extends StatefulWidget {
 
 class _FairPriceScreenState extends State<FairPriceScreen> {
   late final _materials = TextEditingController(
-    text: rs(listingDraft.materials),
+    text: listingDraft.materials == 0 ? '' : rs(listingDraft.materials),
   );
-  late final _mine = TextEditingController(text: rs(listingDraft.userPrice));
+  late final _mine = TextEditingController(
+    text: listingDraft.userPrice == 0 ? '' : rs(listingDraft.userPrice),
+  );
 
   @override
   void dispose() {
@@ -238,7 +240,7 @@ class _FairPriceScreenState extends State<FairPriceScreen> {
   );
 
   Widget _priceCard(dynamic l, ListingDraft d, PriceSuggestion s) {
-    final pos = thumbPosition(d.userPrice, s);
+    final pos = thumbPosition(d.finalPrice, s);
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(

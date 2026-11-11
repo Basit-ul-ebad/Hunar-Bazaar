@@ -21,7 +21,7 @@ class BazaarHomeScreen extends StatelessWidget {
   void _onNav(BuildContext context, int i) {
     switch (i) {
       case 1:
-        context.go('/maker/rukhsana');
+        context.go('/maker/me');
       case 3:
         context.go('/sell');
     }
@@ -182,7 +182,7 @@ class _HeroCard extends StatelessWidget {
                 TextLink(
                   l.meetMakers,
                   color: AppColors.madder,
-                  onTap: () => context.go('/maker/rukhsana'),
+                  onTap: () => context.go('/maker/me'),
                 ),
               ],
             ),

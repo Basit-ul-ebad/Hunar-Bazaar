@@ -1,4 +1,4 @@
-/// Shared data models. OWNER: Basit (backend). UI people: build against these, don't edit.
+// Shared data models. OWNER: Basit (backend). UI people: build against these, don't edit.
 
 const List<String> kCategories = [
   'Embroidery',

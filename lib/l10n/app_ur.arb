@@ -1,0 +1,326 @@
+{
+  "@@locale": "ur",
+  "appName": "ہنر بازار",
+  "handmadeInPakistan": "پاکستان میں ہاتھ سے بنا",
+  "verifiedMaker": "تصدیق شدہ کاریگر",
+  "live": "لائیو",
+  "back": "واپس",
+  "close": "بند کریں",
+  "saved": "محفوظ چیزیں",
+  "next": "آگے",
+  "navExplore": "دریافت",
+  "navMakers": "کاریگر",
+  "navSaved": "محفوظ",
+  "navSell": "بیچیں",
+  "sellerHome": "ہوم",
+  "sellerListings": "لسٹنگز",
+  "sellerOrders": "آرڈر",
+  "sellerMyShop": "میری دکان",
+  "makerRukhsana": "رخسانہ",
+  "makerRukhsanaBibi": "رخسانہ بی بی",
+  "makerZainab": "زینب",
+  "shopRukhsana": "رخسانہ کی پھلکاری",
+  "cityMultan": "ملتان",
+  "cityMultanPunjab": "ملتان، پنجاب",
+  "cityHala": "ہالہ",
+  "cityLahore": "لاہور",
+  "cityKarachi": "کراچی",
+  "cityIslamabad": "اسلام آباد",
+  "buyerAyesha": "عائشہ",
+  "buyerSana": "ثنا",
+  "buyerMehreen": "مہرین",
+  "craftPhulkari": "پھلکاری",
+  "craftAjrak": "اجرک",
+  "craftRalli": "رلی",
+  "craftBluePottery": "نیلی مٹی کے برتن",
+  "craftSindhi": "سندھی کڑھائی",
+  "craftOther": "+ دیگر",
+  "handEmbroidery": "ہاتھ کی کڑھائی",
+  "productDupattaShort": "ہاتھ سے کڑھائی والا پھلکاری دوپٹہ",
+  "productDupattaFull": "کھدر پر ہاتھ سے کڑھائی والا پھلکاری دوپٹہ",
+  "productDupatta": "پھلکاری دوپٹہ",
+  "productAjrakShawl": "بلاک پرنٹ اجرک شال",
+  "productCushion": "باغ کشن کور",
+  "productShawl": "پھلکاری شال",
+  "productPotli": "کڑھائی والی پوٹلی",
+  "byMaker": "{name} کی طرف سے · {city}",
+  "@byMaker": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "searchHint": "پھلکاری، اجرک، رلی تلاش کریں…",
+  "heroTitle": "ان خواتین سے براہِ راست خریدیں جو اسے بناتی ہیں",
+  "meetMakers": "کاریگروں سے ملیں ←",
+  "shopByCraft": "ہنر کے لحاظ سے خریداری",
+  "newFromMakers": "کاریگروں کی نئی چیزیں",
+  "seeAll": "سب دیکھیں",
+  "ratingReviews": "4.9 · 32 جائزے",
+  "chipHandEmbroidered": "ہاتھ سے کڑھائی",
+  "hoursOfWork": "{n} گھنٹے کا کام",
+  "@hoursOfWork": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "cashOnDelivery": "کیش آن ڈیلیوری",
+  "madeBy": "بنانے والی",
+  "verifiedYears": "تصدیق شدہ کاریگر · 22 سال سے پھلکاری",
+  "theStory": "کہانی",
+  "storyText": "نرم کھدر کاٹن، پنجابی باغ انداز میں ریشمی دھاگے سے ہاتھ سے کڑھائی۔ ہر ستارہ ایک ایک کر کے کاڑھا جاتا ہے، اس لیے کوئی دو ٹکڑے ایک جیسے نہیں ہوتے۔",
+  "orderOnWhatsApp": "واٹس ایپ پر آرڈر کریں",
+  "deliveryIn": "ڈیلیوری 3–5 دن میں",
+  "save": "محفوظ کریں",
+  "removeSaved": "محفوظ سے ہٹائیں",
+  "message": "پیغام",
+  "followShop": "دکان فالو کریں",
+  "voiceQuote": "\"میری ماں نے مجھے دس سال کی عمر میں پھلکاری سکھائی۔ ہر ٹکڑے میں ان کی سلائی ہے۔\"",
+  "playVoice": "کاریگر کا صوتی پیغام چلائیں",
+  "productsTab": "مصنوعات · {n}",
+  "@productsTab": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsTab": "جائزے",
+  "aboutTab": "تعارف",
+  "soldCount": "{n} فروخت",
+  "@soldCount": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "sellTitle": "اپنا ہنر پورے پاکستان تک پہنچائیں",
+  "sellTagline": "",
+  "sellStep1": "ایک تصویر سے آپ کی لسٹنگ بن جاتی ہے",
+  "sellStep2": "ہم مناسب قیمت طے کرنے میں مدد کرتے ہیں",
+  "sellStep3": "خریدار واٹس ایپ پر آرڈر کرتے ہیں",
+  "phoneNumber": "فون نمبر",
+  "startSelling": "بیچنا شروع کریں",
+  "setUpShop": "اپنی دکان بنائیں",
+  "shopName": "دکان کا نام",
+  "yourCraft": "آپ کا ہنر",
+  "cityLabel": "شہر",
+  "addPhotoTitle": "اپنی یا کام کرتے ہاتھوں کی تصویر شامل کریں",
+  "addPhotoHint": "اختیاری۔ خریدار کاریگر کی تصویر والی دکانوں پر زیادہ بھروسا کرتے ہیں۔",
+  "openMyShop": "میری دکان کھولیں",
+  "greeting": "السلام علیکم، رخسانہ",
+  "viewShop": "دکان دیکھیں",
+  "thisMonth": "اس مہینے",
+  "ordersLabel": "آرڈر",
+  "shopViews": "دکان کے وزٹ",
+  "addNewProduct": "نیا سامان شامل کریں",
+  "onePhoto": "ایک تصویر، تقریباً 2 منٹ",
+  "buyersWaiting": "خریدار آپ کا انتظار کر رہے ہیں",
+  "nNew": "{n} نئے",
+  "@nNew": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "reply": "جواب دیں",
+  "msgAyesha": "کیا پھلکاری دوپٹہ دستیاب ہے؟",
+  "msgSana": "کیا یہ سبز رنگ میں بن سکتا ہے؟",
+  "yourListings": "آپ کی لسٹنگز",
+  "seeAllN": "سب {n} دیکھیں",
+  "@seeAllN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "priceViews": "{price} · {n} ویوز",
+  "@priceViews": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "stepPhotos": "مرحلہ 1 از 4 · تصاویر",
+  "photoHint": "دن کی روشنی · سیدھا بچھائیں · پورا ٹکڑا دکھائیں",
+  "addUpTo": "زیادہ سے زیادہ 5 تصاویر: پورا ٹکڑا، سلائی کا کلوز اپ، پہنا ہوا یا استعمال میں",
+  "gallery": "گیلری",
+  "takePhoto": "تصویر لیں",
+  "maxPhotos": "آپ زیادہ سے زیادہ 5 تصاویر شامل کر سکتی ہیں۔",
+  "writingTitle": "آپ کی لسٹنگ تیار ہو رہی ہے",
+  "writingUrdu": "",
+  "aiCheck1": "ملا: پھلکاری دوپٹہ، کھدر کاٹن",
+  "aiCheck2": "اردو اور انگریزی میں عنوان اور کہانی لکھی جا رہی ہے",
+  "aiCheck3": "آپ کی قیمت تیار کی جا رہی ہے",
+  "writtenByAi": "جیمنی AI نے لکھا · آگے آپ سب کچھ بدل سکتی ہیں",
+  "skipWrite": "چھوڑیں، میں خود لکھتی ہوں",
+  "stepDetails": "مرحلہ 2 از 4 · تفصیل",
+  "aiNote": "AI کے نشان والے خانے آپ کے لیے لکھے گئے ہیں۔ بدلنے کے لیے ٹیپ کریں۔",
+  "fieldTitle": "عنوان",
+  "fieldCategory": "زمرہ",
+  "categoryValue": "پھلکاری › دوپٹے",
+  "fieldStory": "کہانی",
+  "writeAgain": "↻ دوبارہ لکھیں",
+  "listen": "▶ سنیں",
+  "detailMaterial": "مواد",
+  "detailMaterialValue": "کھدر کاٹن، ریشمی دھاگہ",
+  "detailTechnique": "تکنیک",
+  "detailTechniqueValue": "ہاتھ کی کڑھائی (باغ)",
+  "detailSize": "سائز",
+  "detailSizeValue": "2.5 میٹر × 1 میٹر",
+  "nextSetPrice": "آگے: قیمت طے کریں",
+  "stepPrice": "مرحلہ 3 از 4 · قیمت",
+  "tellByVoice": "بول کر بتائیں",
+  "materialsCost": "مواد کی لاگت",
+  "clothThread": "کپڑا + دھاگہ",
+  "timeSpent": "وقت لگا",
+  "daysN": "{n} دن",
+  "@daysN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "less": "کم",
+  "more": "زیادہ",
+  "worthTitle": "آپ کے کام کی قدر",
+  "aiAssisted": "AI کی مدد سے",
+  "lowLabel": "کم · {price}",
+  "@lowLabel": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "fairLabel": "مناسب",
+  "highLabel": "زیادہ · {price}",
+  "@highLabel": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "breakdownMaterials": "مواد",
+  "yourTime": "آپ کا وقت · {h} گھنٹے × {rate}",
+  "@yourTime": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "handValue": "ہاتھ کی کڑھائی کی قدر",
+  "listenWhy": "▶ وجہ سنیں",
+  "yourPrice": "آپ کی قیمت",
+  "youDecide": "فیصلہ ہمیشہ آپ کا",
+  "nextPreview": "آگے: پیش منظر",
+  "stepPreview": "مرحلہ 4 از 4 · پیش منظر",
+  "catalogTitle": "آپ کا واٹس ایپ کیٹلاگ کارڈ",
+  "catalogByline": "{name} کی طرف سے · {city} · واٹس ایپ پر آرڈر کریں",
+  "@catalogByline": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "messageLabel": "پیغام",
+  "shareMessage": "میری دکان میں نیا: ہاتھ سے کڑھائی والا پھلکاری دوپٹہ، {price}۔ پورے پاکستان میں کیش آن ڈیلیوری۔ آرڈر کے لیے جواب دیں۔",
+  "@shareMessage": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "publishShare": "شائع کریں اور واٹس ایپ پر شیئر کریں",
+  "publishOnly": "صرف بازار میں شائع کریں",
+  "liveTitle": "آپ کا دوپٹہ بازار میں آ گیا ہے",
+  "liveUrdu": "",
+  "liveSub": "خریدار اب اسے بازار اور واٹس ایپ پر تلاش کر سکتے ہیں۔",
+  "yourShopLink": "آپ کی دکان کا لنک",
+  "copyLink": "لنک کاپی کریں",
+  "linkCopied": "لنک کاپی ہو گیا",
+  "tipsTitle": "پہلا آرڈر جلد حاصل کریں",
+  "tip1": "کارڈ کو 3 واٹس ایپ گروپس میں شیئر کریں",
+  "tip2": "سلائی کی ایک کلوز اپ تصویر شامل کریں",
+  "tip3": "15 سیکنڈ کا \"کاریگر سے ملیں\" نوٹ ریکارڈ کریں",
+  "addAnother": "ایک اور چیز شامل کریں",
+  "backDashboard": "ڈیش بورڈ پر واپس",
+  "ordersTitle": "آرڈرز",
+  "tabNew": "نئے · {n}",
+  "@tabNew": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "tabToSend": "بھیجنے ہیں · {n}",
+  "@tabToSend": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "tabDelivered": "پہنچ گئے · {n}",
+  "@tabDelivered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "earnedIn": "نومبر میں کمائی",
+  "allTime": "کل · {price}",
+  "@allTime": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "cashNote": "کیش آن ڈیلیوری · رقم آپ کو کورئیر سے ملے گی",
+  "chatWhatsApp": "واٹس ایپ پر چیٹ",
+  "acceptOrder": "آرڈر قبول کریں",
+  "whenToday": "آج",
+  "whenYesterday": "کل",
+  "orderMeta": "{buyer} · {city} · {when}",
+  "@orderMeta": {
+    "placeholders": {
+      "buyer": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "earningsChart": "پچھلے 6 مہینوں کی کمائی، بڑھتی ہوئی"
+}

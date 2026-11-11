@@ -1,0 +1,84 @@
+import 'package:flutter/foundation.dart';
+import 'listing_ai_service.dart';
+import 'pricing_calc.dart';
+
+/// The product being listed. Lives outside the widgets so it survives a
+/// language switch and every step of the flow shares it.
+class ListingDraft extends ChangeNotifier {
+  static const maxPhotos = 5;
+
+  /// Photos picked by the maker (bytes work on mobile and web).
+  final List<Uint8List> photos = [];
+  int selectedPhoto = 0;
+
+  String titleEn = '';
+  String titleUr = '';
+  String storyEn = '';
+  String storyUr = '';
+  double craftMargin = 0.30;
+
+  int materials = 1200;
+  int days = 3;
+  int userPrice = 5000;
+
+  int get hours => days * kHoursPerDay;
+
+  PriceSuggestion get suggestion =>
+      suggestPrice(materials: materials, hours: hours, margin: craftMargin);
+
+  bool get hasPhoto => photos.isNotEmpty;
+  Uint8List? get selected =>
+      photos.isEmpty ? null : photos[selectedPhoto.clamp(0, photos.length - 1)];
+
+  void addPhotos(Iterable<Uint8List> more) {
+    for (final p in more) {
+      if (photos.length >= maxPhotos) break;
+      photos.add(p);
+      selectedPhoto = photos.length - 1;
+    }
+    notifyListeners();
+  }
+
+  void selectPhoto(int i) {
+    selectedPhoto = i;
+    notifyListeners();
+  }
+
+  void apply(ListingSuggestion s) {
+    titleEn = s.titleEn;
+    titleUr = s.titleUr;
+    storyEn = s.storyEn;
+    storyUr = s.storyUr;
+    craftMargin = s.craftMargin;
+    notifyListeners();
+  }
+
+  void setMaterials(int v) {
+    materials = v;
+    notifyListeners();
+  }
+
+  void setDays(int v) {
+    days = v.clamp(1, 30);
+    notifyListeners();
+  }
+
+  void setUserPrice(int v) {
+    userPrice = v;
+    notifyListeners();
+  }
+
+  /// Back to a blank flow ("Add another product").
+  void reset() {
+    photos.clear();
+    selectedPhoto = 0;
+    titleEn = titleUr = storyEn = storyUr = '';
+    craftMargin = 0.30;
+    materials = 1200;
+    days = 3;
+    userPrice = 5000;
+    notifyListeners();
+  }
+}
+
+final ListingDraft listingDraft = ListingDraft();

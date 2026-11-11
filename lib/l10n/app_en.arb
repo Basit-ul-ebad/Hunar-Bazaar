@@ -1,0 +1,326 @@
+{
+  "@@locale": "en",
+  "appName": "Hunar Bazaar",
+  "handmadeInPakistan": "HANDMADE IN PAKISTAN",
+  "verifiedMaker": "Verified maker",
+  "live": "Live",
+  "back": "Back",
+  "close": "Close",
+  "saved": "Saved items",
+  "next": "Next",
+  "navExplore": "Explore",
+  "navMakers": "Makers",
+  "navSaved": "Saved",
+  "navSell": "Sell",
+  "sellerHome": "Home",
+  "sellerListings": "Listings",
+  "sellerOrders": "Orders",
+  "sellerMyShop": "My shop",
+  "makerRukhsana": "Rukhsana",
+  "makerRukhsanaBibi": "Rukhsana Bibi",
+  "makerZainab": "Zainab",
+  "shopRukhsana": "Rukhsana's Phulkari",
+  "cityMultan": "Multan",
+  "cityMultanPunjab": "Multan, Punjab",
+  "cityHala": "Hala",
+  "cityLahore": "Lahore",
+  "cityKarachi": "Karachi",
+  "cityIslamabad": "Islamabad",
+  "buyerAyesha": "Ayesha",
+  "buyerSana": "Sana",
+  "buyerMehreen": "Mehreen",
+  "craftPhulkari": "Phulkari",
+  "craftAjrak": "Ajrak",
+  "craftRalli": "Ralli",
+  "craftBluePottery": "Blue pottery",
+  "craftSindhi": "Sindhi embroidery",
+  "craftOther": "+ Other",
+  "handEmbroidery": "Hand embroidery",
+  "productDupattaShort": "Phulkari dupatta, hand-embroidered",
+  "productDupattaFull": "Phulkari dupatta, hand-embroidered on khaddar",
+  "productDupatta": "Phulkari dupatta",
+  "productAjrakShawl": "Ajrak shawl, block-printed",
+  "productCushion": "Bagh cushion cover",
+  "productShawl": "Phulkari shawl",
+  "productPotli": "Embroidered potli",
+  "byMaker": "by {name} · {city}",
+  "@byMaker": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "searchHint": "Search phulkari, ajrak, ralli…",
+  "heroTitle": "Buy directly from the women who make it",
+  "meetMakers": "Meet the makers →",
+  "shopByCraft": "Shop by craft",
+  "newFromMakers": "New from makers",
+  "seeAll": "See all",
+  "ratingReviews": "4.9 · 32 reviews",
+  "chipHandEmbroidered": "Hand-embroidered",
+  "hoursOfWork": "{n} hours of work",
+  "@hoursOfWork": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "cashOnDelivery": "Cash on delivery",
+  "madeBy": "Made by",
+  "verifiedYears": "Verified maker · 22 years of phulkari",
+  "theStory": "The story",
+  "storyText": "Soft khaddar cotton, embroidered by hand with silk thread in the Punjabi bagh style. Each star is stitched one by one, so no two pieces are the same.",
+  "orderOnWhatsApp": "Order on WhatsApp",
+  "deliveryIn": "Delivery in 3–5 days",
+  "save": "Save",
+  "removeSaved": "Remove from saved",
+  "message": "Message",
+  "followShop": "Follow shop",
+  "voiceQuote": "\"My mother taught me phulkari when I was ten. Every piece carries her stitches.\"",
+  "playVoice": "Play maker's voice note",
+  "productsTab": "Products · {n}",
+  "@productsTab": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsTab": "Reviews",
+  "aboutTab": "About",
+  "soldCount": "{n} sold",
+  "@soldCount": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "sellTitle": "Sell your craft to all of Pakistan",
+  "sellTagline": "اپنا ہنر پورے پاکستان تک پہنچائیں",
+  "sellStep1": "One photo makes your listing",
+  "sellStep2": "We help you set a fair price",
+  "sellStep3": "Buyers order on WhatsApp",
+  "phoneNumber": "Phone number",
+  "startSelling": "Start selling",
+  "setUpShop": "Set up your shop",
+  "shopName": "Shop name",
+  "yourCraft": "Your craft",
+  "cityLabel": "City",
+  "addPhotoTitle": "Add a photo of you or your hands at work",
+  "addPhotoHint": "Optional. Buyers trust shops with a maker photo.",
+  "openMyShop": "Open my shop",
+  "greeting": "Assalam-o-alaikum, Rukhsana",
+  "viewShop": "View shop",
+  "thisMonth": "This month",
+  "ordersLabel": "Orders",
+  "shopViews": "Shop views",
+  "addNewProduct": "Add a new product",
+  "onePhoto": "One photo, about 2 minutes",
+  "buyersWaiting": "Buyers waiting for you",
+  "nNew": "{n} new",
+  "@nNew": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "reply": "Reply",
+  "msgAyesha": "Is the phulkari dupatta available?",
+  "msgSana": "Can you make it in green?",
+  "yourListings": "Your listings",
+  "seeAllN": "See all {n}",
+  "@seeAllN": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "priceViews": "{price} · {n} views",
+  "@priceViews": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "stepPhotos": "Step 1 of 4 · Photos",
+  "photoHint": "Daylight · lay it flat · show the whole piece",
+  "addUpTo": "Add up to 5 photos: whole piece, close-up of stitches, worn or in use",
+  "gallery": "Gallery",
+  "takePhoto": "Take photo",
+  "maxPhotos": "You can add up to 5 photos.",
+  "writingTitle": "Writing your listing…",
+  "writingUrdu": "آپ کی لسٹنگ تیار ہو رہی ہے",
+  "aiCheck1": "Found: phulkari dupatta, khaddar cotton",
+  "aiCheck2": "Writing the title and story in Urdu & English",
+  "aiCheck3": "Getting your price ready",
+  "writtenByAi": "Written by Gemini AI · you can change everything next",
+  "skipWrite": "Skip and write it myself",
+  "stepDetails": "Step 2 of 4 · Details",
+  "aiNote": "Fields marked AI were written for you. Tap to change.",
+  "fieldTitle": "Title",
+  "fieldCategory": "Category",
+  "categoryValue": "Phulkari › Dupattas",
+  "fieldStory": "The story",
+  "writeAgain": "↻ Write again",
+  "listen": "▶ Listen",
+  "detailMaterial": "Material",
+  "detailMaterialValue": "Khaddar cotton, silk thread",
+  "detailTechnique": "Technique",
+  "detailTechniqueValue": "Hand embroidery (bagh)",
+  "detailSize": "Size",
+  "detailSizeValue": "2.5 m × 1 m",
+  "nextSetPrice": "Next: set the price",
+  "stepPrice": "Step 3 of 4 · Price",
+  "tellByVoice": "Tell by voice",
+  "materialsCost": "Materials cost",
+  "clothThread": "Cloth + thread",
+  "timeSpent": "Time spent",
+  "daysN": "{n, plural, =1{1 day} other{{n} days}}",
+  "@daysN": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "less": "Less",
+  "more": "More",
+  "worthTitle": "What your work is worth",
+  "aiAssisted": "AI-ASSISTED",
+  "lowLabel": "Low · {price}",
+  "@lowLabel": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "fairLabel": "Fair",
+  "highLabel": "High · {price}",
+  "@highLabel": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "breakdownMaterials": "Materials",
+  "yourTime": "Your time · {h} h × {rate}",
+  "@yourTime": {
+    "placeholders": {
+      "h": {
+        "type": "String"
+      },
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "handValue": "Hand-embroidery value",
+  "listenWhy": "▶ Listen to why",
+  "yourPrice": "Your price",
+  "youDecide": "You always decide",
+  "nextPreview": "Next: preview",
+  "stepPreview": "Step 4 of 4 · Preview",
+  "catalogTitle": "Your WhatsApp catalog card",
+  "catalogByline": "By {name} · {city} · Order on WhatsApp",
+  "@catalogByline": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "messageLabel": "Message",
+  "shareMessage": "New in my shop: hand-embroidered phulkari dupatta, {price}. Cash on delivery across Pakistan. Reply to order.",
+  "@shareMessage": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "publishShare": "Publish & share on WhatsApp",
+  "publishOnly": "Publish to the Bazaar only",
+  "liveTitle": "Your dupatta is live",
+  "liveUrdu": "آپ کا دوپٹہ بازار میں آ گیا ہے",
+  "liveSub": "Buyers can now find it in the Bazaar and on WhatsApp.",
+  "yourShopLink": "Your shop link",
+  "copyLink": "Copy link",
+  "linkCopied": "Link copied",
+  "tipsTitle": "Get your first order faster",
+  "tip1": "Share the card in 3 WhatsApp groups",
+  "tip2": "Add a close-up photo of the stitches",
+  "tip3": "Record a 15-second \"meet the maker\" note",
+  "addAnother": "Add another product",
+  "backDashboard": "Back to dashboard",
+  "ordersTitle": "Orders",
+  "tabNew": "New · {n}",
+  "@tabNew": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "tabToSend": "To send · {n}",
+  "@tabToSend": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "tabDelivered": "Delivered · {n}",
+  "@tabDelivered": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "earnedIn": "Earned in November",
+  "allTime": "All time · {price}",
+  "@allTime": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "cashNote": "Cash on delivery · you receive the money from the courier",
+  "chatWhatsApp": "Chat on WhatsApp",
+  "acceptOrder": "Accept order",
+  "whenToday": "today",
+  "whenYesterday": "yesterday",
+  "orderMeta": "{buyer} · {city} · {when}",
+  "@orderMeta": {
+    "placeholders": {
+      "buyer": {
+        "type": "String"
+      },
+      "city": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "earningsChart": "Earnings for the last 6 months, rising"
+}

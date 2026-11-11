@@ -63,37 +63,6 @@ class BazaarHomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 18),
                   const LiveListingsSection(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        l.newFromMakers,
-                        style: AppText.dm(16, weight: FontWeight.w700),
-                      ),
-                      TextLink(l.seeAll, onTap: () {}),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  TwoColumnGrid(
-                    children: [
-                      for (final p in newFromMakers)
-                        ProductCard(
-                          art: ProductArt.spec(
-                            p.art,
-                            tile: p.art.variant == ArtVariant.ajrak ? 24 : 22,
-                            cornerDots: p.art.variant == ArtVariant.ajrak,
-                            squareRatio: 0.58,
-                            dotRatio: 0.125,
-                            semanticLabel: t.productShort(p.id),
-                          ),
-                          title: t.productShort(p.id),
-                          price: rs(p.price),
-                          byline: t.byline(p.makerId),
-                          onTap: () => context.go('/product/${dupatta.id}'),
-                        ),
-                    ],
-                  ),
                 ],
               ),
             ),

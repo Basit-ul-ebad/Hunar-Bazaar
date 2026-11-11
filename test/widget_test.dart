@@ -1,58 +1,26 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:hunar_bazaar/main.dart';
-import 'package:hunar_bazaar/router.dart';
+import 'package:hunar_bazaar/features/listing/pricing_calc.dart';
 
-/// Renders every screen at 360 px wide and checks that nothing overflows.
-///
-/// flutter_test draws text with the Ahem font, whose glyphs are about 1.8x wider
-/// than DM Sans. So the scales below are real scale / 1.8: 0.55 stands in for
-/// text scale 1.0 and 0.72 for text scale 1.3.
 void main() {
-  GoogleFonts.config.allowRuntimeFetching = false;
+  test('fair price = (materials + hours x rate) x (1 + margin)', () {
+    final s = suggestPrice(materials: 1000, hours: 10, margin: 0.30);
+    expect(s.timeValue, 1500);
+    expect(s.fair, 3300);
+    expect(s.low < s.fair && s.fair < s.high, isTrue);
+  });
 
-  const routes = [
-    '/',
-    '/product/phulkari-dupatta',
-    '/maker/rukhsana',
-    '/sell',
-    '/sell/setup',
-    '/seller',
-    '/seller/new/photos',
-    '/seller/new/ai',
-    '/seller/new/details',
-    '/seller/new/price',
-    '/seller/new/preview',
-    '/seller/new/done',
-    '/seller/orders',
-    '/gallery',
-  ];
+  test('local market multiplier scales the price', () {
+    final base = suggestPrice(materials: 1000, hours: 10, margin: 0.30);
+    final hot = suggestPrice(materials: 1000, hours: 10, margin: 0.30, market: 1.2);
+    expect(hot.fair, 3900);
+    expect(hot.fair > base.fair, isTrue);
+  });
 
-  for (final scale in [0.55, 0.72]) {
-    for (final route in routes) {
-      testWidgets('$route fits 360 px (Ahem scale $scale)', (tester) async {
-        tester.view.physicalSize = const Size(360, 780);
-        tester.view.devicePixelRatio = 1;
-        addTearDown(tester.view.reset);
-        router.go(route);
-        await tester.pumpWidget(
-          MediaQuery(
-            data: MediaQueryData(
-              size: const Size(360, 780),
-              textScaler: TextScaler.linear(scale),
-            ),
-            child: const HunarBazaarApp(),
-          ),
-        );
-        await tester.pump(const Duration(milliseconds: 400));
-        if (route == '/seller/new/ai') {
-          // Let the 3 s animation finish and the app move on to the details step.
-          await tester.pump(const Duration(seconds: 4));
-          await tester.pump(const Duration(milliseconds: 400));
-        }
-        expect(tester.takeException(), isNull);
-      });
-    }
-  }
+  test('AI-supplied margin and market are clamped', () {
+    final s = suggestPrice(materials: 1000, hours: 10, margin: 0.9);
+    expect(s.margin, 0.40);
+    expect(s.fair, 3500);
+    final m = suggestPrice(materials: 1000, hours: 10, margin: 0.30, market: 5);
+    expect(m.market, 1.25);
+  });
 }

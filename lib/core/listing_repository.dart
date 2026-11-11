@@ -140,6 +140,29 @@ class ListingRepository {
                 LiveListing.fromDoc(d),
           ]);
 
+  /// The seller's shop details live in `sellers/{uid}`: a new anonymous sign-in = a new, empty account.
+  Future<void> saveSeller() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+    await FirebaseFirestore.instance.collection('sellers').doc(uid).set({
+      'shopName': sellerProfile.shopName,
+      'city': sellerProfile.city,
+      'whatsapp': sellerProfile.whatsapp,
+      'updatedAt': FieldValue.serverTimestamp(),
+    }, SetOptions(merge: true));
+  }
+
+  Future<void> loadSeller() async {
+    final uid = FirebaseAuth.instance.currentUser?.uid;
+    if (uid == null) return;
+    final d = await FirebaseFirestore.instance.collection('sellers').doc(uid).get();
+    final m = d.data();
+    if (m == null) return;
+    sellerProfile.shopName = (m['shopName'] ?? '').toString();
+    sellerProfile.city = (m['city'] ?? '').toString();
+    sellerProfile.whatsapp = (m['whatsapp'] ?? '').toString();
+  }
+
   Future<LiveListing?> get(String id) async {
     final d = await _col.doc(id).get();
     return d.exists ? LiveListing.fromDoc(d) : null;

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/lang.dart';
 import '../../core/listing_repository.dart';
-import '../../data/mock_data.dart';
+import '../../data/mock_data.dart' show rs;
 import '../../theme/app_colors.dart';
 import '../../theme/app_text.dart';
 import '../../widgets/product_card.dart';
@@ -35,14 +35,13 @@ class LiveListingImage extends StatelessWidget {
   }
 }
 
-/// "Just listed" row on the buyer home: products published from this app, live from Firestore.
-/// Shows nothing while loading, when empty, or if Firebase is unavailable. OWNER: Basit.
+/// All products for sale, live from Firestore (the whole marketplace). OWNER: Basit.
 class LiveListingsSection extends StatelessWidget {
   const LiveListingsSection({super.key});
 
   Stream<List<LiveListing>>? _stream() {
     try {
-      return listingRepository.watchAll(limit: 12);
+      return listingRepository.watchAll(limit: 40);
     } catch (_) {
       return null; // Firebase not initialised
     }
@@ -51,40 +50,65 @@ class LiveListingsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final stream = _stream();
-    if (stream == null) return const SizedBox.shrink();
+    final title = Text(
+      tr('Fresh from makers', 'کاریگروں سے تازہ'),
+      style: AppText.dm(16, weight: FontWeight.w700),
+    );
+    if (stream == null) {
+      return _message(title, tr('Could not connect. Check your internet.', 'کنکشن نہیں ہو سکا۔ انٹرنیٹ چیک کریں۔'));
+    }
     return StreamBuilder<List<LiveListing>>(
       stream: stream,
       builder: (context, snap) {
-        final items = snap.data ?? const <LiveListing>[];
-        if (items.isEmpty) return const SizedBox.shrink();
+        if (snap.hasError) {
+          return _message(title, tr('Could not load products.', 'پروڈکٹس لوڈ نہیں ہو سکیں۔'));
+        }
+        if (!snap.hasData) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              title,
+              const SizedBox(height: 24),
+              const Center(child: CircularProgressIndicator()),
+            ],
+          );
+        }
+        final items = snap.data!;
+        if (items.isEmpty) {
+          return _message(
+            title,
+            tr('No products yet. Be the first to sell!', 'ابھی کوئی پروڈکٹ نہیں۔ سب سے پہلے آپ بیچیں!'),
+          );
+        }
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              tr('Just listed', 'ابھی لگایا گیا'),
-              style: AppText.dm(16, weight: FontWeight.w700),
-            ),
+            title,
             const SizedBox(height: 10),
             TwoColumnGrid(
               children: [
                 for (final l in items)
                   ProductCard(
                     art: LiveListingImage(imageB64: l.imageB64),
-                    title: tr(l.titleEn, l.titleUr).isEmpty
-                        ? l.titleEn
-                        : tr(l.titleEn, l.titleUr),
+                    title: tr(l.titleEn, l.titleUr).isEmpty ? l.titleEn : tr(l.titleEn, l.titleUr),
                     price: rs(l.price),
-                    byline: [l.sellerName, l.city]
-                        .where((e) => e.trim().isNotEmpty)
-                        .join(' · '),
+                    byline: [l.sellerName, l.city].where((e) => e.trim().isNotEmpty).join(' · '),
                     onTap: () => context.go('/listing/${l.id}'),
                   ),
               ],
             ),
-            const SizedBox(height: 18),
           ],
         );
       },
     );
   }
+
+  Widget _message(Widget title, String text) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      title,
+      const SizedBox(height: 16),
+      Text(text, style: AppText.dm(14, color: AppColors.muted)),
+    ],
+  );
 }

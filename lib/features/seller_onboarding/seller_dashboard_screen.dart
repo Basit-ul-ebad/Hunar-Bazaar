@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../core/lang.dart';
+import '../../core/listing_repository.dart';
+import '../../core/seller_profile.dart';
 import '../../data/mock_data.dart';
 import '../../l10n/l10n.dart';
 import '../../theme/app_colors.dart';
@@ -64,17 +67,22 @@ class _Header extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      l.greeting,
+                      tr('Assalam-o-alaikum', 'السلام علیکم'),
                       style: AppText.dm(13, color: AppColors.muted),
                     ),
-                    Text(l.shopRukhsana, style: AppText.fraunces(18)),
+                    Text(
+                      sellerProfile.shopName.isEmpty
+                          ? tr('My shop', 'میری دکان')
+                          : sellerProfile.shopName,
+                      style: AppText.fraunces(18),
+                    ),
                   ],
                 ),
               ),
               TextLink(
                 l.viewShop,
                 size: 13,
-                onTap: () => context.go('/maker/rukhsana'),
+                onTap: () => context.go('/'),
               ),
             ],
           ),
@@ -91,12 +99,15 @@ class _Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
-    final stats = [
-      (l.thisMonth, rs(12400)),
-      (l.ordersLabel, '5'),
-      (l.shopViews, '340'),
-    ];
-    return Column(
+    return StreamBuilder<List<LiveListing>>(
+      stream: myListingsStream(),
+      builder: (context, snap) {
+        final stats = [
+          (tr('Products', 'پروڈکٹس'), '${snap.data?.length ?? 0}'),
+          (l.ordersLabel, '0'),
+          (l.thisMonth, rs(0)),
+        ];
+        return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
@@ -134,12 +145,10 @@ class _Body extends StatelessWidget {
         const SizedBox(height: 16),
         const _AddProduct(),
         const SizedBox(height: 16),
-        const _Buyers(),
-        const SizedBox(height: 16),
         const MyLiveListings(),
-        // The Urdu design (U1) has no listings section.
-        if (!urdu) ...[const SizedBox(height: 16), const _Listings()],
       ],
+    );
+      },
     );
   }
 }
@@ -189,176 +198,6 @@ class _AddProduct extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _Buyers extends StatelessWidget {
-  const _Buyers();
-
-  @override
-  Widget build(BuildContext context) {
-    final l = context.l10n;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Text(
-                l.buyersWaiting,
-                style: AppText.dm(15, weight: FontWeight.w700),
-              ),
-            ),
-            const SizedBox(width: 8),
-            MixedText(
-              l.nNew('2'),
-              style: AppText.dm(
-                12,
-                weight: FontWeight.w700,
-                color: AppColors.madder,
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        AppCard(
-          padding: EdgeInsets.zero,
-          child: Column(
-            children: [
-              for (var i = 0; i < buyerMessages.length; i++) ...[
-                if (i > 0) const Divider(height: 1, color: AppColors.lineSoft),
-                _MessageRow(m: buyerMessages[i]),
-              ],
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _MessageRow extends StatelessWidget {
-  const _MessageRow({required this.m});
-  final BuyerMessage m;
-
-  @override
-  Widget build(BuildContext context) {
-    final l = context.l10n;
-    final t = MockText(l);
-    final name = t.buyer(m.id);
-    return Padding(
-      padding: const EdgeInsets.all(12),
-      child: Row(
-        children: [
-          MakerAvatar.initial(name.characters.first),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '$name · ${t.buyerCity(m.id)}',
-                  style: AppText.dm(14, weight: FontWeight.w700),
-                ),
-                Text(
-                  t.buyerMessage(m.id),
-                  style: AppText.dm(13, color: AppColors.muted),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(width: 10),
-          Tappable(
-            onTap: () {},
-            semanticLabel: l.reply,
-            radius: BorderRadius.circular(18),
-            child: Container(
-              height: 36,
-              padding: const EdgeInsets.symmetric(horizontal: 12),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.ink),
-                borderRadius: BorderRadius.circular(18),
-              ),
-              child: Text(
-                l.reply,
-                style: AppText.dm(13, weight: FontWeight.w700),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _Listings extends StatelessWidget {
-  const _Listings();
-
-  @override
-  Widget build(BuildContext context) {
-    final l = context.l10n;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Flexible(
-              child: Text(
-                l.yourListings,
-                style: AppText.dm(15, weight: FontWeight.w700),
-              ),
-            ),
-            TextLink(
-              l.seeAllN('12'),
-              size: 13,
-              onTap: () => context.go('/maker/rukhsana'),
-            ),
-          ],
-        ),
-        const SizedBox(height: 8),
-        AppCard(
-          padding: const EdgeInsets.all(10),
-          onTap: () => context.go('/product/${dupatta.id}'),
-          child: Row(
-            children: [
-              SizedBox(
-                width: 52,
-                height: 52,
-                child: ProductArt(
-                  variant: ArtVariant.phulkari,
-                  tile: 13,
-                  motifRatio: 0.385,
-                  centerMark: CenterMark.none,
-                  radius: BorderRadius.circular(8),
-                  semanticLabel: 'Product thumbnail',
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l.productDupatta,
-                      style: AppText.dm(14, weight: FontWeight.w700),
-                    ),
-                    MixedText(
-                      l.priceViews(rs(5000), '86'),
-                      style: AppText.dm(13, color: AppColors.muted),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 8),
-              AppBadge.live(label: l.live),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

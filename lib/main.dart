@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'core/demo_seed.dart';
 import 'core/gemini_listing_ai.dart';
+import 'core/listing_repository.dart';
 import 'core/lang.dart';
 import 'features/listing/listing_ai_service.dart';
 import 'firebase_options.dart';
@@ -28,6 +30,15 @@ Future<void> main() async {
   } catch (e) {
     debugPrint('Anonymous sign-in failed (enable it in Firebase console): $e');
   }
+  try {
+    await listingRepository.loadSeller().timeout(const Duration(seconds: 5));
+  } catch (e) {
+    debugPrint('Could not load seller profile: $e');
+  }
+  // First run on an empty database: add a few demo products (runs in the background).
+  seedDemoListingsIfEmpty().catchError((Object e) {
+    debugPrint('Demo seed skipped: $e');
+  });
   runApp(const HunarBazaarApp());
 }
 

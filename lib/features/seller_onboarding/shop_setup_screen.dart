@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../../core/lang.dart';
+import '../../core/listing_repository.dart';
 import '../../core/seller_profile.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
@@ -28,7 +29,7 @@ class _ShopSetupScreenState extends State<ShopSetupScreen> {
   final _shop = TextEditingController();
   final _city = TextEditingController();
   final _phone = TextEditingController();
-  final _selected = <String>{'phulkari'};
+  final _selected = <String>{};
   bool _other = false;
   Uint8List? _photo;
   bool _filled = false;
@@ -38,9 +39,9 @@ class _ShopSetupScreenState extends State<ShopSetupScreen> {
     super.didChangeDependencies();
     if (_filled) return;
     _filled = true;
-    final l = context.l10n;
-    _shop.text = l.shopRukhsana;
-    _city.text = l.cityMultanPunjab;
+    _shop.text = sellerProfile.shopName;
+    _city.text = sellerProfile.city;
+    _phone.text = sellerProfile.whatsapp;
   }
 
   @override
@@ -173,6 +174,9 @@ class _ShopSetupScreenState extends State<ShopSetupScreen> {
                     sellerProfile.shopName = _shop.text.trim();
                     sellerProfile.city = _city.text.trim();
                     sellerProfile.whatsapp = _phone.text.trim();
+                    listingRepository.saveSeller().catchError((Object e) {
+                      debugPrint('Could not save shop: $e');
+                    });
                     context.go('/seller');
                   },
                 ),

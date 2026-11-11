@@ -1,7 +1,7 @@
 /// The current seller's shop details (filled in at shop setup). OWNER: Basit.
 class SellerProfile {
   String shopName = '';
-  String city = 'Multan';
+  String city = '';
   String whatsapp = ''; // buyers contact the seller here
 }
 

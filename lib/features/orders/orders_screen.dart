@@ -1,3 +1,4 @@
+import '../../widgets/app_nav.dart';
 import 'package:flutter/material.dart';
 import '../../core/lang.dart';
 import '../../theme/app_colors.dart';
@@ -12,10 +13,7 @@ class OrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: SellerBottomNav(
-        current: 2,
-        onSelected: (i) => SellerNav.go(context, i),
-      ),
+      bottomNavigationBar: const AppNav(current: 2),
       body: SafeArea(
         child: Center(
           child: Padding(

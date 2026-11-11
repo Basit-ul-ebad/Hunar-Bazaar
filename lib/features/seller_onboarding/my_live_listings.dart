@@ -49,7 +49,7 @@ class MyLiveListings extends StatelessWidget {
               for (final l in mine) ...[
                 AppCard(
                   padding: const EdgeInsets.all(10),
-                  onTap: () => context.go('/listing/${l.id}'),
+                  onTap: () => context.push('/listing/${l.id}'),
                   child: Row(
                     children: [
                       SizedBox(

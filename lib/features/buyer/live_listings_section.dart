@@ -93,7 +93,7 @@ class LiveListingsSection extends StatelessWidget {
                     title: tr(l.titleEn, l.titleUr).isEmpty ? l.titleEn : tr(l.titleEn, l.titleUr),
                     price: rs(l.price),
                     byline: [l.sellerName, l.city].where((e) => e.trim().isNotEmpty).join(' · '),
-                    onTap: () => context.go('/listing/${l.id}'),
+                    onTap: () => context.push('/listing/${l.id}'),
                   ),
               ],
             ),

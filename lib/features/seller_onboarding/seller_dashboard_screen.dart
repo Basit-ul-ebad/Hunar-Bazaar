@@ -1,3 +1,4 @@
+import '../../widgets/app_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/lang.dart';
@@ -26,10 +27,7 @@ class SellerDashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final urdu = Localizations.localeOf(context).languageCode == 'ur';
     return Scaffold(
-      bottomNavigationBar: SellerBottomNav(
-        current: 0,
-        onSelected: (i) => SellerNav.go(context, i),
-      ),
+      bottomNavigationBar: const AppNav(current: 2),
       body: Column(
         children: [
           const _Header(),

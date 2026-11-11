@@ -1,3 +1,4 @@
+import '../../widgets/app_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/lang.dart';
@@ -41,9 +42,7 @@ class MakerStorefrontScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.bg,
-      bottomNavigationBar: _isMe
-          ? SellerBottomNav(current: 3, onSelected: (i) => SellerNav.go(context, i))
-          : null,
+      bottomNavigationBar: AppNav(current: _isMe ? 3 : 1),
       body: StreamBuilder<List<LiveListing>>(
         stream: _stream(),
         builder: (context, snap) {
@@ -124,7 +123,7 @@ class MakerStorefrontScreen extends StatelessWidget {
                                     title: tr(l.titleEn, l.titleUr).isEmpty ? l.titleEn : tr(l.titleEn, l.titleUr),
                                     price: rs(l.price),
                                     compact: true,
-                                    onTap: () => context.go('/listing/${l.id}'),
+                                    onTap: () => context.push('/listing/${l.id}'),
                                   ),
                               ],
                             ),

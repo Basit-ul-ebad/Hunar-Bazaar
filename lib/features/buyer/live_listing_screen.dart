@@ -52,9 +52,15 @@ class LiveListingScreen extends StatelessWidget {
               const SizedBox(height: 16),
               Text(title, style: AppText.fraunces(22)),
               const SizedBox(height: 6),
-              Text(
-                [l.sellerName, l.city].where((e) => e.trim().isNotEmpty).join(' · '),
-                style: AppText.dm(13, color: AppColors.muted),
+              InkWell(
+                onTap: () => context.push('/maker/${l.sellerId}'),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                  child: Text(
+                    [l.sellerName, l.city].where((e) => e.trim().isNotEmpty).join(' · '),
+                    style: AppText.dm(13, weight: FontWeight.w700, color: AppColors.indigo),
+                  ),
+                ),
               ),
               const SizedBox(height: 12),
               Row(

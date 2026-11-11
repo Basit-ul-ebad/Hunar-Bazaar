@@ -1,3 +1,4 @@
+import '../../widgets/app_nav.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/lang.dart';
@@ -22,6 +23,7 @@ class MakersScreen extends StatelessWidget {
     }
     return Scaffold(
       backgroundColor: AppColors.bg,
+      bottomNavigationBar: const AppNav(current: 1),
       body: Column(
         children: [
           Container(
@@ -63,7 +65,7 @@ class MakersScreen extends StatelessWidget {
                     for (final e in byMaker.entries) ...[
                       AppCard(
                         padding: const EdgeInsets.all(12),
-                        onTap: () => context.go('/maker/${e.key}'),
+                        onTap: () => context.push('/maker/${e.key}'),
                         child: Row(
                           children: [
                             MakerAvatar.initial(

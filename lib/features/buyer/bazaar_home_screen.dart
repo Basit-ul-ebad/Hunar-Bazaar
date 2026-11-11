@@ -1,3 +1,4 @@
+import '../../widgets/app_nav.dart';
 import '../../core/seller_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -19,24 +20,12 @@ import 'live_listings_section.dart';
 class BazaarHomeScreen extends StatelessWidget {
   const BazaarHomeScreen({super.key});
 
-  void _onNav(BuildContext context, int i) {
-    switch (i) {
-      case 1:
-        context.go('/makers');
-      case 3:
-        context.go(sellerProfile.shopName.isNotEmpty ? '/seller' : '/sell');
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final l = context.l10n;
     final t = MockText(l);
     return Scaffold(
-      bottomNavigationBar: BuyerBottomNav(
-        current: 0,
-        onSelected: (i) => _onNav(context, i),
-      ),
+      bottomNavigationBar: const AppNav(current: 0),
       body: Column(
         children: [
           _Header(),
@@ -183,7 +172,7 @@ class _HeroCard extends StatelessWidget {
                 TextLink(
                   l.meetMakers,
                   color: AppColors.madder,
-                  onTap: () => context.go('/maker/me'),
+                  onTap: () => context.go('/makers'),
                 ),
               ],
             ),

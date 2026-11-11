@@ -138,7 +138,7 @@ class _Viewfinder extends StatelessWidget {
                           ],
                         ),
                         child: photo != null
-                            ? Image.memory(photo, fit: BoxFit.cover)
+                            ? Image.memory(photo, fit: BoxFit.contain)
                             : const ProductArt(
                                 variant: ArtVariant.phulkari,
                                 tile: 26,

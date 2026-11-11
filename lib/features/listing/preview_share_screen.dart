@@ -40,7 +40,7 @@ class _PreviewShareScreenState extends State<PreviewShareScreen> {
     return t.trim().isEmpty ? context.l10n.productDupattaFull : t;
   }
 
-  Future<void> _publishAndShare(String message) async {
+  Future<void> _publishAndShare(String message, {bool share = true}) async {
     if (_busy) return;
     setState(() => _busy = true);
     final router = GoRouter.of(context);
@@ -48,8 +48,16 @@ class _PreviewShareScreenState extends State<PreviewShareScreen> {
       await listingRepository.publish(listingDraft);
     } catch (e) {
       debugPrint('Publish to Firestore failed: $e');
+      if (mounted) {
+        setState(() => _busy = false);
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Could not publish: $e')),
+        );
+      }
+      return; // stay here so nothing is lost
     }
     try {
+      if (share) {
       final boundary =
           _cardKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
       final image = await boundary.toImage(pixelRatio: 3);
@@ -68,6 +76,7 @@ class _PreviewShareScreenState extends State<PreviewShareScreen> {
           fileNameOverrides: const ['hunar-bazaar-card.png'],
         ),
       );
+      }
     } catch (_) {
       // Sharing is not available here; the listing is still published.
     }
@@ -212,7 +221,7 @@ class _PreviewShareScreenState extends State<PreviewShareScreen> {
                   label: l.publishOnly,
                   onPressed: _busy
                       ? null
-                      : () => context.go('/seller/new/done'),
+                      : () => _publishAndShare(message, share: false),
                 ),
               ],
             ),

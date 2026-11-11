@@ -1,14 +1,33 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'core/gemini_listing_ai.dart';
 import 'core/lang.dart';
+import 'features/listing/listing_ai_service.dart';
+import 'firebase_options.dart';
 import 'l10n/l10n.dart';
 import 'router.dart';
 import 'theme/app_theme.dart';
 
-/// OWNER: Basit. Firebase.initializeApp goes here once `flutterfire configure` is done.
-void main() {
+/// OWNER: Basit. Firebase + anonymous sign-in + real Gemini; falls back to the mock AI if Firebase fails.
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // TODO(Basit): await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    listingAi = GeminiListingAiService();
+  } catch (e) {
+    debugPrint('Firebase init failed, using mock AI: $e');
+  }
+  try {
+    if (FirebaseAuth.instance.currentUser == null) {
+      await FirebaseAuth.instance.signInAnonymously();
+    }
+  } catch (e) {
+    debugPrint('Anonymous sign-in failed (enable it in Firebase console): $e');
+  }
   runApp(const HunarBazaarApp());
 }
 

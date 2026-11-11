@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "594086592599",
+    "project_id": "todoapp-981b0",
+    "storage_bucket": "todoapp-981b0.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:594086592599:android:1edbc3a4b1dd3268c62312",
+        "android_client_info": {
+          "package_name": "com.onavri.hunar_bazaar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPWUaRTX_Ck1USk3SPQetge_hz1K6DShk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

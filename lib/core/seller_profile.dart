@@ -2,6 +2,7 @@
 class SellerProfile {
   String shopName = '';
   String city = 'Multan';
+  String whatsapp = ''; // buyers contact the seller here
 }
 
 final SellerProfile sellerProfile = SellerProfile();

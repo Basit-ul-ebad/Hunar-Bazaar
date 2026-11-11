@@ -13,6 +13,7 @@ class LiveListing {
     required this.id,
     required this.sellerId,
     required this.sellerName,
+    required this.sellerWhatsapp,
     required this.city,
     required this.titleEn,
     required this.titleUr,
@@ -34,6 +35,7 @@ class LiveListing {
   final String id;
   final String sellerId;
   final String sellerName;
+  final String sellerWhatsapp;
   final String city;
   final String titleEn;
   final String titleUr;
@@ -60,6 +62,7 @@ class LiveListing {
       id: d.id,
       sellerId: s(m['sellerId']),
       sellerName: s(m['sellerName']),
+      sellerWhatsapp: s(m['sellerWhatsapp']),
       city: s(m['city']),
       titleEn: s(m['titleEn']),
       titleUr: s(m['titleUr']),
@@ -102,6 +105,7 @@ class ListingRepository {
         .add({
           'sellerId': FirebaseAuth.instance.currentUser?.uid ?? 'anonymous',
           'sellerName': sellerProfile.shopName,
+          'sellerWhatsapp': sellerProfile.whatsapp,
           'city': cityKey(sellerProfile.city),
           'titleEn': d.titleEn,
           'titleUr': d.titleUr,

@@ -13,6 +13,7 @@ import '../../widgets/product_art.dart';
 import '../../widgets/seller_bottom_nav.dart';
 import '../../widgets/tappable.dart';
 import '../../widgets/text_link.dart';
+import 'my_live_listings.dart';
 
 /// S3 · Seller dashboard (`/seller`). In Urdu it is U1: RTL, Nastaliq, DM Sans numbers.
 class SellerDashboardScreen extends StatelessWidget {
@@ -134,6 +135,8 @@ class _Body extends StatelessWidget {
         const _AddProduct(),
         const SizedBox(height: 16),
         const _Buyers(),
+        const SizedBox(height: 16),
+        const MyLiveListings(),
         // The Urdu design (U1) has no listings section.
         if (!urdu) ...[const SizedBox(height: 16), const _Listings()],
       ],

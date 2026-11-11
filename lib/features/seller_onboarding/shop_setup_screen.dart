@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import '../../core/lang.dart';
 import '../../core/seller_profile.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
@@ -26,6 +27,7 @@ class ShopSetupScreen extends StatefulWidget {
 class _ShopSetupScreenState extends State<ShopSetupScreen> {
   final _shop = TextEditingController();
   final _city = TextEditingController();
+  final _phone = TextEditingController();
   final _selected = <String>{'phulkari'};
   bool _other = false;
   Uint8List? _photo;
@@ -45,6 +47,7 @@ class _ShopSetupScreenState extends State<ShopSetupScreen> {
   void dispose() {
     _shop.dispose();
     _city.dispose();
+    _phone.dispose();
     super.dispose();
   }
 
@@ -148,6 +151,19 @@ class _ShopSetupScreenState extends State<ShopSetupScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
+                _Labeled(
+                  label: tr('WhatsApp number', 'واٹس ایپ نمبر'),
+                  child: SizedBox(
+                    height: 50,
+                    child: TextField(
+                      controller: _phone,
+                      keyboardType: TextInputType.phone,
+                      style: AppText.dm(16),
+                      decoration: boxFieldDecoration(),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 16),
                 _UploadCard(photo: _photo, onTap: _pickPhoto),
                 const SizedBox(height: 16),
                 const Spacer(),
@@ -156,6 +172,7 @@ class _ShopSetupScreenState extends State<ShopSetupScreen> {
                   onPressed: () {
                     sellerProfile.shopName = _shop.text.trim();
                     sellerProfile.city = _city.text.trim();
+                    sellerProfile.whatsapp = _phone.text.trim();
                     context.go('/seller');
                   },
                 ),

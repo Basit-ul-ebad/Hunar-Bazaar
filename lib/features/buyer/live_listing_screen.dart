@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/lang.dart';
 import '../../core/listing_repository.dart';
 import '../../data/mock_data.dart';
 import '../../theme/app_colors.dart';
 import '../../theme/app_text.dart';
+import '../../widgets/primary_button.dart';
 import 'live_listings_section.dart';
 
 /// Detail page for a product published from the app (`/listing/:id`). OWNER: Basit.
@@ -124,10 +126,28 @@ class LiveListingScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              if (l.sellerWhatsapp.trim().isNotEmpty) ...[
+                const SizedBox(height: 16),
+                PrimaryButton(
+                  label: tr('Message the maker on WhatsApp', 'واٹس ایپ پر رابطہ کریں'),
+                  onPressed: () => _whatsapp(l, title),
+                ),
+              ],
             ],
           );
         },
       ),
+    );
+  }
+
+  /// Opens a WhatsApp chat with the seller: buyers reach makers directly, no middleman.
+  Future<void> _whatsapp(LiveListing l, String title) async {
+    var n = l.sellerWhatsapp.replaceAll(RegExp(r'[^0-9]'), '');
+    if (n.startsWith('0')) n = '92${n.substring(1)}';
+    final msg = Uri.encodeComponent('Hi, I saw "$title" on Hunar Bazaar. Is it available?');
+    await launchUrl(
+      Uri.parse('https://wa.me/$n?text=$msg'),
+      mode: LaunchMode.externalApplication,
     );
   }
 
